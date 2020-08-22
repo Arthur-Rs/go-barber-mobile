@@ -1,15 +1,15 @@
 import React from 'react'
 import 'react-native-gesture-handler'
 import { StatusBar } from 'react-native'
-import { SafeAreaView } from './styles/GlobalStyles'
 import Routes from './routes'
+import AppProvider from './hooks'
 
 const App: React.FC = () => {
   return (
-    <SafeAreaView>
+    <AppProvider>
       <StatusBar barStyle="light-content" backgroundColor="#312e38" />
       <Routes />
-    </SafeAreaView>
+    </AppProvider>
   )
 }
 

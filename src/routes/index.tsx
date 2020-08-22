@@ -1,27 +1,11 @@
-import 'react-native-gesture-handler'
 import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
-import { createStackNavigator } from '@react-navigation/stack'
-
-// => screens
-import SignIn from '../screens/SignIn'
-import SignUp from '../screens/SignUp'
-
-const { Navigator, Screen } = createStackNavigator()
+import AppRoutes from './app.routes'
+import AuthRoutes from './auth.routes'
+import { useAuth } from '../hooks/auth'
 
 const Routes: React.FC = () => {
-  return (
-    <NavigationContainer>
-      <Navigator
-        screenOptions={{
-          headerShown: false,
-          cardStyle: { backgroundColor: '#312e38' }
-        }}>
-        <Screen name="SignIn" component={SignIn} />
-        <Screen name="SignUp" component={SignUp} />
-      </Navigator>
-    </NavigationContainer>
-  )
+  const { user } = useAuth()
+  return user ? <AppRoutes /> : <AuthRoutes />
 }
 
 export default Routes
